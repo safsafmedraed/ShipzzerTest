@@ -84,7 +84,6 @@ export default function App() {
     if(!winner && ! tie){
       const isPlayerTurn =
       squares.filter((square) => square !== null).length % 2 === 0;
-    console.log(winner)
     if (isPlayerTurn) {
       let newSquares = squares;
       newSquares[index] = "x";
