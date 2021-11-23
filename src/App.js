@@ -118,13 +118,14 @@ export default function App() {
             x={element === "x" ? 1 : 0}
             o={element === "o" ? 1 : 0}
             onClick={() => handleSquareClick(index)}
+            
           />
         ))}
       </Board>
       {!!winner && winner === "x" && <div>You WON!</div>}
       {!!winner && winner === "o" && <div>You LOST!</div>}
-      {tie ? <div>Tie !</div> : <div></div>}
-      
+      {!winner && tie ? <div>Tie !</div> : <div></div>}
+
       <div className='restart'><button onClick={()=>restartGame()}>Restart Game</button></div>
     </main>
   );
