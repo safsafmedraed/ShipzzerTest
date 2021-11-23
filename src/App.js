@@ -18,9 +18,6 @@ export default function App() {
   const [squares, setSquares] = useState(defaultSquares);
   const [winner, setWinner] = useState(null);
   const [tie, setTie] = useState(null)
-  const squaresNumber =squares.filter((squares) => {
-    return squares === 'x'
-  })
   useEffect(() => {
     const isComputerTurn =
       squares.filter((square) => square !== null).length % 2 === 1;
@@ -40,17 +37,11 @@ export default function App() {
     const computerWon = linesThatAre("o", "o", "o").length > 0;
     if (playerWon) {
       setWinner("x");
-      setTimeout(() => {
-        setSquares(defaultSquares);
-        setWinner(null);
-      }, 5000);
+      
     }
     if (computerWon) {
       setWinner("o");
-      setTimeout(() => {
-        setSquares(defaultSquares);
-        setWinner(null);
-      }, 5000);
+      
     }
     const putComputerAt = (index) => {
       let newSquares = squares;
@@ -90,7 +81,7 @@ export default function App() {
     }
   }, [squares]);
   const handleSquareClick = (index) => {
-    if(!winner){
+    if(!winner && ! tie){
       const isPlayerTurn =
       squares.filter((square) => square !== null).length % 2 === 0;
     console.log(winner)
@@ -102,10 +93,6 @@ export default function App() {
       })
       if (Xnumber.length === 4) {
         setTie(true)
-        setTimeout(() => {
-          setSquares(defaultSquares)
-          setTie(null)
-        }, 5000)
       }
       setSquares([...newSquares]);
     }
@@ -114,6 +101,8 @@ export default function App() {
   };
   const restartGame =()=>{
     setSquares(defaultSquares)
+    setWinner(null)
+    setTie(null)
   }
   return (
     <main>
