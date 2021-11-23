@@ -17,6 +17,7 @@ const lines = [
 export default function App() {
   const [squares, setSquares] = useState(defaultSquares);
   const [winner, setWinner] = useState(null);
+  const [tie, setTie] = useState(null)
   useEffect(() => {
     const isComputerTurn =
       squares.filter((square) => square !== null).length % 2 === 1;
@@ -88,12 +89,26 @@ export default function App() {
   const handleSquareClick = (index) => {
     const isPlayerTurn =
       squares.filter((square) => square !== null).length % 2 === 0;
+    console.log(isPlayerTurn)
     if (isPlayerTurn) {
       let newSquares = squares;
       newSquares[index] = "x";
+      let Xnumber = newSquares.filter((squares) => {
+        return squares === 'x'
+      })
+      if (Xnumber.length === 4) {
+        setTie(true)
+        setTimeout(() => {
+          setSquares(defaultSquares)
+          setTie(null)
+        }, 5000)
+      }
       setSquares([...newSquares]);
     }
   };
+  const restartGame =()=>{
+    setSquares(defaultSquares)
+  }
   return (
     <main>
       <div className="header">Technical Test Shipzzer Tic Tac Toe </div>
@@ -108,6 +123,9 @@ export default function App() {
       </Board>
       {!!winner && winner === "x" && <div>You WON!</div>}
       {!!winner && winner === "o" && <div>You LOST!</div>}
+      {tie ? <div>Tie !</div> : <div></div>}
+      
+      <div className='restart'><button onClick={()=>restartGame()}>Restart Game</button></div>
     </main>
   );
 }

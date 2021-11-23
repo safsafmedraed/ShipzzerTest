@@ -1,5 +1,6 @@
 .header {
   font-family: sans-serif;
+  font-size: large;
   text-align: center;
   padding-bottom: 10%;
 }
@@ -25,4 +26,8 @@ div.board {
 main {
   width: 300px;
   margin: 50px auto 0;
+}
+div.restart{
+  padding-top: 10%;
+  text-align: center;
 }
