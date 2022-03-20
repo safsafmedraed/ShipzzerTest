@@ -105,7 +105,7 @@ export default function App() {
   }
   return (
     <main>
-      <div className="header">Technical Test Shipzzer Tic Tac Toe </div>
+      <div className="header"> Tic Tac Toe by SR </div>
       <Board>
         {squares.map((element, index) => (
           <Squares
