@@ -116,8 +116,8 @@ export default function App() {
           />
         ))}
       </Board>
-      {!!winner && winner === "x" && <div>You WON!</div>}
-      {!!winner && winner === "o" && <div>You LOST!</div>}
+      {!!winner && winner === "x" && <div>You Won!</div>}
+      {!!winner && winner === "o" && <div>You Lost!</div>}
       {!winner && tie ? <div>Tie !</div> : <div></div>}
 
       <div className='restart'><button onClick={()=>restartGame()}>Restart Game</button></div>
